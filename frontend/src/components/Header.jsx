@@ -5,10 +5,10 @@ import hadiSecondLogo from "../assets/logo.png";
 const Header = () => {
   return (
     <header className="flex justify-between p-4 border-b border-primary">
-      <a href="" className="flex items-center gap-1">
+      <Link to={"/"} className="flex items-center gap-1">
         <img src={hadiLogo} alt="" className="w-12 h-12" />
         <img src={hadiSecondLogo} alt="" className=" h-10" />
-      </a>
+      </Link>
       <div className="hidden  sm:flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300">
         <div>Anywhere</div>
         <div className="border-l border-gray-300"></div>
