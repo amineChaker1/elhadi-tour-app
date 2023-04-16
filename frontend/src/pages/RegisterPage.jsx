@@ -1,13 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAddUserMutation } from "../../app/apiSlice";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const registerUser = () => {
+  const navigate = useNavigate();
+  const [registerUserMut] = useAddUserMutation();
+  const registerUser = async (e) => {
+    e.preventDefault();
+    const newUser = {
+      name,
+      email,
+      password,
+    };
+    console.log(newUser);
+    const res = await registerUserMut(newUser);
+    if (res.error) return console.log("error", res.error);
 
-  }
+    navigate("/");
+  };
   return (
     <section class="bg-white ">
       <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
@@ -32,7 +45,7 @@ const RegisterPage = () => {
             </label>
             <input
               value={name}
-              onChange={(ev) => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               type="text"
               name="name"
               id="name"
@@ -50,7 +63,7 @@ const RegisterPage = () => {
             </label>
             <input
               value={email}
-              onChange={(ev) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               name="email"
               id="email"
@@ -68,7 +81,7 @@ const RegisterPage = () => {
             </label>
             <input
               value={password}
-              onChange={(ev) => setPassword(ev.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               id="password"
               class="block p-3 w-full text-sm text-gray-900  rounded-lg outline-secondary shadow-sm border-2 border-primary focus:ring-primary focus:border-primary  placeholder-primary dark:shadow-sm-light"

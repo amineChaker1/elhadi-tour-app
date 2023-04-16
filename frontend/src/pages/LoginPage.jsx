@@ -1,7 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginUserMutation } from "../../app/apiSlice";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../app/userSlice";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginUserMutation] = useLoginUserMutation();
+  const loginUser = async (e) => {
+    e.preventDefault();
+    const user = { email, password };
+    const res = await loginUserMutation(user);
+    if (res.error) return console.log("error", res.error);
+    console.log(res.data);
+    localStorage.setItem("user", res.data.name);
+    dispatch(setUser(res.data));
+    navigate("/");
+  };
   return (
     <section class="bg-white ">
       <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
@@ -16,7 +34,7 @@ const LoginPage = () => {
             Inscrivez-Vous.
           </Link>
         </p>
-        <form action="#" class="space-y-8">
+        <form action="#" onSubmit={loginUser} class="space-y-8">
           <div>
             <label
               for="email"
@@ -25,6 +43,8 @@ const LoginPage = () => {
               Votre email
             </label>
             <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               name="email"
               id="email"
@@ -41,6 +61,8 @@ const LoginPage = () => {
               Votre Mot De Pass
             </label>
             <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               id="password"
               class="block p-3 w-full text-sm text-gray-900  rounded-lg outline-secondary shadow-sm border-2 border-primary focus:ring-primary focus:border-primary  placeholder-primary dark:shadow-sm-light"

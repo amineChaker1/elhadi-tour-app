@@ -2,7 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import hadiLogo from "../assets/hadi-logo.png";
 import hadiSecondLogo from "../assets/logo.png";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const user = useSelector((state) => state.user);
+  console.log(user);
   return (
     <header className="flex justify-between p-4 border-b border-primary">
       <Link to={"/"} className="flex items-center gap-1">
@@ -50,6 +53,7 @@ const Header = () => {
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
         </svg>
+        {user && <span> {user.name} </span>}
         <div className="bg-gray-500 text-white rounded-full border border-gray-500 overflow-hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
