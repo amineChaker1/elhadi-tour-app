@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAddPlaceImageMutation } from "../../app/apiSlice";
-
+import axios from "axios";
 const PlacesSection = () => {
   const { action } = useParams();
   const [addplacemut] = useAddPlaceImageMutation();
@@ -17,6 +17,24 @@ const PlacesSection = () => {
   const [maxGuests, setMaxGuests] = useState(1);
   const [price, setPrice] = useState(100);
   const [redirect, setRedirect] = useState(false);
+  const uploadFromDevice = (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      data.append("photos", files[i]);
+    }
+    axios
+      .post("http://localhost:4321/upload", data, {
+        headers: { "Content-type": "multipart/form-data" },
+      })
+      .then((response) => {
+        const { data: filenames } = response;
+        onChange((prev) => {
+          return [...prev, ...filenames];
+        });
+      });
+    console.log(data);
+  };
   const addPhotoByLink = async (e) => {
     e.preventDefault();
     const upload = {
@@ -89,10 +107,24 @@ const PlacesSection = () => {
                 Add Photo{" "}
               </button>
             </div>
-            <div className="mt-2  grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            <div className="mt-2 gap-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
               {addedPhotos.length > 0 &&
-                addedPhotos.map((link) => <div>{link}</div>)}
-              <button className="flex  items-center justify-center border bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
+                addedPhotos.map((link) => (
+                  <div>
+                    <img
+                      className=""
+                      src={`http://localhost:4321/uploads/${link}`}
+                      alt=""
+                    />
+                  </div>
+                ))}
+              <label className="flex cursor-pointer items-center justify-center border bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
+                <input
+                  type="file"
+                  multiple
+                  className="hidden "
+                  onChange={(e) => uploadFromDevice(e)}
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -108,7 +140,7 @@ const PlacesSection = () => {
                   />
                 </svg>
                 Upload
-              </button>
+              </label>
             </div>
             <h2 className="text-xl mt-4">Description</h2>
             <textarea

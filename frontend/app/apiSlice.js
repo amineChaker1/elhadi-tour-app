@@ -25,7 +25,7 @@ export const apiSlice = createApi({
     }),
     addPlaceImage: builder.mutation({
       query: (data) => ({
-        url: "upload",
+        url: "uploadByLink",
         method: "POST",
         body: data,
       }),

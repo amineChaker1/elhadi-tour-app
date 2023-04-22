@@ -7,6 +7,8 @@ import userRouter from "./routes/user.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import imageDownloader from "image-downloader";
+import multer from "multer";
+import fs from "fs";
 const __filename = fileURLToPath(import.meta.url);
 console.log(__filename);
 
@@ -18,7 +20,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/auth", userRouter);
 //app.use("/place", placeRouter);
-app.post("/upload", async (req, res) => {
+app.post("/uploadByLink", async (req, res) => {
   const { link } = req.body;
   try {
     const newName = "photo" + Date.now() + ".jpg";
@@ -38,6 +40,20 @@ app.post("/upload", async (req, res) => {
       message: error.message,
     });
   }
+});
+const photosMiddleware = multer({ dest: "uploads" });
+app.post("/upload", photosMiddleware.array("photos", 100), (req, res) => {
+  const uploadedFiles = [];
+  for (let i = 0; i < req.files.length; i++) {
+    const { path, originalname } = req.files[i];
+    const parts = originalname.split(".");
+    const ext = parts[parts.length - 1];
+    const newPath = path + "." + ext;
+    fs.renameSync(path, newPath);
+    uploadedFiles.push(newPath.replace("uploads/", ""));
+  }
+
+  res.json(req.files);
 });
 app.use("/uploads", express.static(__dirname + "/uploads"));
 /*app.post("/api/upload-by-link", async (req, res) => {
