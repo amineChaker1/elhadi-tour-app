@@ -1,23 +1,22 @@
-import imageDownloader from "image-downloader";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+import Place from "../models/place.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-export const imageUploader = async (req, res) => {
-  const { link } = req.body;
+export const getAllPlaces = async (req, res) => {
   try {
-    const newName = "photo" + Date.now() + ".jpg";
-    await imageDownloader.image({
-      url: link,
-      dest: __dirname + "/uploads/" + newName,
+    const place = await Place.find({});
+    res.status(200).json(place);
+  } catch (error) {
+    res.status(500).json({
+      location: error.location,
+      message: error.message,
     });
-    /*const url = await uploadToS3(
-      "/tmp/" + newName,
-      newName,
-      mime.lookup("/tmp/" + newName)
-    );*/
-    res.json(newName);
+  }
+};
+
+export const addNewPlace = async (req, res) => {
+  const newPlace = req.body;
+  try {
+    const place = await Place.create(newPlace);
+    res.status(200).json(place);
   } catch (error) {
     res.status(500).json({
       location: error.location,

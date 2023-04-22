@@ -1,6 +1,7 @@
 import express from "express";
-import { imageUploader } from "../controllers/place.js";
-/*
+import { addNewPlace, getAllPlaces } from "../controllers/place.js";
+
 const router = express.Router();
-router.post("/upload-by-link", imageUploader);
-export default router;*/
+router.get("/", getAllPlaces);
+router.post("/", addNewPlace);
+export default router;

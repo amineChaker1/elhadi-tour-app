@@ -30,6 +30,16 @@ export const apiSlice = createApi({
         body: data,
       }),
     }),
+    getPlaces: builder.query({
+      query: () => "place",
+    }),
+    addNewPlace: builder.mutation({
+      query: (data) => ({
+        url: "place",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -38,4 +48,6 @@ export const {
   useGetUsersQuery,
   useLoginUserMutation,
   useAddPlaceImageMutation,
+  useAddNewPlaceMutation,
+  useGetPlacesQuery,
 } = apiSlice;

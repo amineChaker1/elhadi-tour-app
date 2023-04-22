@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useAddPlaceImageMutation } from "../../app/apiSlice";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  useAddNewPlaceMutation,
+  useAddPlaceImageMutation,
+} from "../../app/apiSlice";
 import axios from "axios";
+import ListingSection from "./ListingSection";
 const PlacesSection = () => {
+  const navigate = useNavigate();
   const { action } = useParams();
   const [addplacemut] = useAddPlaceImageMutation();
+  const [addplacedatamut] = useAddNewPlaceMutation();
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [addedPhotos, setAddedPhotos] = useState([]);
@@ -17,6 +23,34 @@ const PlacesSection = () => {
   const [maxGuests, setMaxGuests] = useState(1);
   const [price, setPrice] = useState(100);
   const [redirect, setRedirect] = useState(false);
+  const newHouse = {
+    title: title,
+    address: address,
+    photos: addedPhotos,
+    description: description,
+    perks: perks,
+    extraInfo: extraInfo,
+    checkIn: checkIn,
+    checkOut: checkOut,
+    maxGuests: maxGuests,
+  };
+
+  const addNewPlace = async (e) => {
+    e.preventDefault();
+    const res = await addplacedatamut(newHouse);
+    console.log(res);
+    navigate("/account/places");
+  };
+  const handelCheckBoxClick = (e) => {
+    const { checked, name } = e.target;
+    if (checked) {
+      setPerks([...perks, name]);
+    } else {
+      setPerks([...perks.filter((pushed) => pushed !== name)]);
+    }
+
+    console.log(perks);
+  };
   const uploadFromDevice = (e) => {
     const files = e.target.files;
     const data = new FormData();
@@ -71,9 +105,10 @@ const PlacesSection = () => {
           Add new place
         </Link>
       </div>
+      <ListingSection />
       {action === "new" && (
         <div>
-          <form>
+          <form onSubmit={addNewPlace}>
             <h2 className="text-xl mt-4">Title</h2>
             <input
               type="text"
@@ -152,7 +187,11 @@ const PlacesSection = () => {
             <h2 className="text-xl mt-4">Perks</h2>
             <div className="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
               <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-                <input type="checkbox" />
+                <input
+                  name="wifi"
+                  onChange={(e) => handelCheckBoxClick(e)}
+                  type="checkbox"
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -171,7 +210,11 @@ const PlacesSection = () => {
                 <span>Wifi </span>
               </label>
               <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-                <input type="checkbox" />
+                <input
+                  name="parking"
+                  onChange={(e) => handelCheckBoxClick(e)}
+                  type="checkbox"
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -190,7 +233,11 @@ const PlacesSection = () => {
                 <span>Free Parking </span>
               </label>
               <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-                <input type="checkbox" />
+                <input
+                  name="tv"
+                  onChange={(e) => handelCheckBoxClick(e)}
+                  type="checkbox"
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -210,7 +257,11 @@ const PlacesSection = () => {
               </label>
 
               <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-                <input type="checkbox" />
+                <input
+                  name="pets"
+                  onChange={(e) => handelCheckBoxClick(e)}
+                  type="checkbox"
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -252,7 +303,7 @@ const PlacesSection = () => {
                 <h3 className="mt-2 -mb-1">Check out time</h3>
                 <input
                   value={checkOut}
-                  onChange={(e) => checkOut(e.target.value)}
+                  onChange={(e) => setCheckOut(e.target.value)}
                   type="text"
                   className="w-full border my-1 py-2 px-3 rounded-2xl"
                   placeholder="22:00"
