@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:4321/auth",
+    baseUrl: "http://localhost:4321/",
   }),
   endpoints: (builder) => ({
     getUsers: builder.query({
@@ -11,14 +11,21 @@ export const apiSlice = createApi({
     }),
     addUser: builder.mutation({
       query: (data) => ({
-        url: "/",
+        url: "auth/",
         method: "POST",
         body: data,
       }),
     }),
     loginUser: builder.mutation({
       query: (data) => ({
-        url: "/login",
+        url: "auth/login",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    addPlaceImage: builder.mutation({
+      query: (data) => ({
+        url: "upload",
         method: "POST",
         body: data,
       }),
@@ -26,5 +33,9 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { useAddUserMutation, useGetUsersQuery, useLoginUserMutation } =
-  apiSlice;
+export const {
+  useAddUserMutation,
+  useGetUsersQuery,
+  useLoginUserMutation,
+  useAddPlaceImageMutation,
+} = apiSlice;

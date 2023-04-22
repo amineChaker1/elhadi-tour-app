@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useAddPlaceImageMutation } from "../../app/apiSlice";
 
 const PlacesSection = () => {
   const { action } = useParams();
+  const [addplacemut] = useAddPlaceImageMutation();
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [addedPhotos, setAddedPhotos] = useState([]);
@@ -15,6 +17,20 @@ const PlacesSection = () => {
   const [maxGuests, setMaxGuests] = useState(1);
   const [price, setPrice] = useState(100);
   const [redirect, setRedirect] = useState(false);
+  const addPhotoByLink = async (e) => {
+    e.preventDefault();
+    const upload = {
+      link: photoLink,
+    };
+    const res = await addplacemut(upload);
+    console.log(res);
+    const filename = res.data;
+    console.log(filename);
+    setAddedPhotos((prev) => {
+      return [...prev, filename];
+    });
+    setPhotoLink("");
+  };
   return (
     <div>
       <div className="text-center">
@@ -65,9 +81,17 @@ const PlacesSection = () => {
                 className="w-full border my-1 py-2 px-3 rounded-2xl"
                 placeholder="add using link"
               />
-              <button className="bg-primary p-2 text-white"> Add Photo </button>
+              <button
+                onClick={addPhotoByLink}
+                className="bg-primary p-2 text-white"
+              >
+                {" "}
+                Add Photo{" "}
+              </button>
             </div>
             <div className="mt-2  grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+              {addedPhotos.length > 0 &&
+                addedPhotos.map((link) => <div>{link}</div>)}
               <button className="flex  items-center justify-center border bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
