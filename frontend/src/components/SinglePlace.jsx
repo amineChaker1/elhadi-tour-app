@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   useAddPlaceImageMutation,
   useGetSinglePlaceQuery,
+  useUpdateSinglePlaceMutation,
 } from "../../app/apiSlice";
 import { useParams } from "react-router-dom";
 
@@ -10,6 +11,7 @@ const SinglePlace = () => {
   const { data } = useGetSinglePlaceQuery(id);
 
   const [addplacemut] = useAddPlaceImageMutation();
+  const [update] = useUpdateSinglePlaceMutation();
   const [Newtitle, setNewTitle] = useState(data?.title);
   const [Newaddress, setNewAddress] = useState(data?.address);
   const [NewaddedPhotos, setNewAddedPhotos] = useState(data?.photos);
@@ -20,7 +22,17 @@ const SinglePlace = () => {
   const [NewcheckIn, setNewCheckIn] = useState(data?.checkIn);
   const [NewcheckOut, setNewCheckOut] = useState(data?.checkOut);
   const [NewmaxGuests, setNewMaxGuests] = useState(data?.maxGuests);
-
+  const updatedHouse = {
+    title: Newtitle,
+    address: Newaddress,
+    photos: NewaddedPhotos,
+    description: Newdescription,
+    perks: Newperks,
+    extraInfo: NewextraInfo,
+    checkIn: NewcheckIn,
+    checkOut: NewcheckOut,
+    maxGuests: NewmaxGuests,
+  };
   const handelCheckBoxClick = (e) => {
     const { checked, name } = e.target;
     if (checked) {
@@ -28,8 +40,6 @@ const SinglePlace = () => {
     } else {
       setNewPerks([...Newperks.filter((pushed) => pushed !== name)]);
     }
-
-    console.log(perks);
   };
   const uploadFromDevice = (e) => {
     const files = e.target.files;
@@ -47,7 +57,6 @@ const SinglePlace = () => {
           return [...prev, ...filenames];
         });
       });
-    console.log(data);
   };
   const addPhotoByLink = async (e) => {
     e.preventDefault();
@@ -63,15 +72,18 @@ const SinglePlace = () => {
     });
     setNewPhotoLink("");
   };
-  if (id) {
-    console.log(id);
-    console.log(data);
-  }
 
+  const updateNewPlace = async (e) => {
+    e.preventDefault();
+    console.log(id);
+    console.log(updatedHouse);
+    const res = await update(id, updatedHouse);
+    console.log(res);
+  };
   return (
     <div>
       <div>
-        <form>
+        <form onSubmit={updateNewPlace}>
           <h2 className="text-xl mt-4">Title</h2>
           <input
             type="text"
