@@ -11,6 +11,18 @@ export const getAllPlaces = async (req, res) => {
     });
   }
 };
+export const getSinglePLace = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const place = await Place.findById(id);
+    res.status(200).json(place);
+  } catch (error) {
+    res.status(500).json({
+      location: error.location,
+      message: error.message,
+    });
+  }
+};
 
 export const addNewPlace = async (req, res) => {
   const newPlace = req.body;

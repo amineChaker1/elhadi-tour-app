@@ -6,6 +6,8 @@ import Layout from "./components/Layout";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 
+import SinglePlace from "./components/SinglePlace";
+
 function App() {
   return (
     <Routes>
@@ -15,6 +17,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/account/:subpage?" element={<ProfilePage />} />
         <Route path="/account/:subpage/:action" element={<ProfilePage />} />
+        <Route path="/account/place/edit/:id" element={<SinglePlace />} />
       </Route>
     </Routes>
   );

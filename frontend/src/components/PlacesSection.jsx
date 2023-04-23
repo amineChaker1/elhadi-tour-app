@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   useAddNewPlaceMutation,
   useAddPlaceImageMutation,
+  useGetSinglePlaceQuery,
 } from "../../app/apiSlice";
 import axios from "axios";
 import ListingSection from "./ListingSection";
@@ -83,6 +84,7 @@ const PlacesSection = () => {
     });
     setPhotoLink("");
   };
+
   return (
     <div>
       <div className="text-center">
@@ -105,8 +107,8 @@ const PlacesSection = () => {
           Add new place
         </Link>
       </div>
-      <ListingSection />
-      {action === "new" && (
+
+      {action === "new" ? (
         <div>
           <form onSubmit={addNewPlace}>
             <h2 className="text-xl mt-4">Title</h2>
@@ -329,6 +331,8 @@ const PlacesSection = () => {
             </button>
           </form>
         </div>
+      ) : (
+        <ListingSection />
       )}
     </div>
   );

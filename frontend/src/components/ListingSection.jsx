@@ -8,16 +8,15 @@ const ListingSection = () => {
   const [places, setPlaces] = useState(data);
   return (
     <div>
-      hello
       {data?.map((place) => (
         <Link
-          to={"/account/places/" + place._id}
-          className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl"
+          to={"/account/place/edit/" + place._id}
+          className="flex cursor-pointer gap-4 my-5 bg-gray-100 p-4 rounded-2xl"
         >
-          <div className="flex w-32 h-32 bg-gray-300 grow shrink-0">
+          <div className="flex w-32 h-32 bg-gray-300 ">
             <img src={place.photos[0]} alt="" />
           </div>
-          <div className="grow-0 shrink">
+          <div className="">
             <h2 className="text-xl">{place.title}</h2>
             <p className="text-sm mt-2">{place.description}</p>
           </div>

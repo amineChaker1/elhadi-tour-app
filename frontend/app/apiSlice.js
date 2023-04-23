@@ -33,6 +33,9 @@ export const apiSlice = createApi({
     getPlaces: builder.query({
       query: () => "place",
     }),
+    getSinglePlace: builder.query({
+      query: (id) => `place/${id}`,
+    }),
     addNewPlace: builder.mutation({
       query: (data) => ({
         url: "place",
@@ -50,4 +53,5 @@ export const {
   useAddPlaceImageMutation,
   useAddNewPlaceMutation,
   useGetPlacesQuery,
+  useGetSinglePlaceQuery,
 } = apiSlice;
