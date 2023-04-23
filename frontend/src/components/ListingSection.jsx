@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetPlacesQuery } from "../../app/apiSlice";
 import { Link } from "react-router-dom";
 
 const ListingSection = () => {
-  const { data } = useGetPlacesQuery();
-  console.log(data);
-  const [places, setPlaces] = useState(data);
+  const { data, isLoading } = useGetPlacesQuery();
+
   return (
     <div>
       {data?.map((place) => (

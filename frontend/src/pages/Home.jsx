@@ -23,8 +23,8 @@ const Home = () => {
                   />
                 )}
               </div>
-              <h2 className="font-bold">{place.address}</h2>
-              <h3 className="text-sm text-gray-500">{place.title}</h3>
+              <h2 className="font-bold">{place.title}</h2>
+              <h3 className="text-sm text-gray-500">{place.address}</h3>
               <div className="mt-1">
                 <span className="font-bold">{place.price} Da</span> per night
               </div>

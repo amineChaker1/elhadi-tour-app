@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useAddPlaceImageMutation,
   useGetSinglePlaceQuery,
@@ -8,8 +8,12 @@ import { useParams } from "react-router-dom";
 
 const SinglePlace = () => {
   const { id } = useParams();
-  const { data } = useGetSinglePlaceQuery(id);
 
+  const { data, isLoading } = useGetSinglePlaceQuery(id);
+  const query = useGetSinglePlaceQuery(id);
+  useEffect(() => {
+    query.refetch();
+  }, [data]);
   const [addplacemut] = useAddPlaceImageMutation();
   const [update] = useUpdateSinglePlaceMutation();
   const [Newtitle, setNewTitle] = useState(data?.title);
@@ -24,6 +28,7 @@ const SinglePlace = () => {
   const [NewmaxGuests, setNewMaxGuests] = useState(data?.maxGuests);
   const [NewPrice, setNewPrice] = useState(data?.price);
   const updatedHouse = {
+    updateId: id,
     title: Newtitle,
     address: Newaddress,
     photos: NewaddedPhotos,
@@ -79,7 +84,7 @@ const SinglePlace = () => {
     e.preventDefault();
     console.log(id);
     console.log(updatedHouse);
-    const res = await update(id, updatedHouse);
+    const res = await update(updatedHouse);
     console.log(res);
   };
   return (
