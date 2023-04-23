@@ -10,14 +10,13 @@ const Header = () => {
     <header className="flex justify-between p-4 border-b border-primary">
       <Link to={"/"} className="flex items-center gap-1">
         <img src={hadiLogo} alt="" className="w-12 h-12" />
-        <img src={hadiSecondLogo} alt="" className=" h-10" />
+        <img src={hadiSecondLogo} alt="" className="hidden sm:block h-10" />
       </Link>
       <div className="hidden  sm:flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300">
         <div>Anywhere</div>
         <div className="border-l border-gray-300"></div>
         <div>Any week</div>
-        <div className="border-l border-gray-300"></div>
-        <div>Add guests</div>
+
         <button className="bg-primary text-white p-1 rounded-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"

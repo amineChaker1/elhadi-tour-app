@@ -22,6 +22,7 @@ const SinglePlace = () => {
   const [NewcheckIn, setNewCheckIn] = useState(data?.checkIn);
   const [NewcheckOut, setNewCheckOut] = useState(data?.checkOut);
   const [NewmaxGuests, setNewMaxGuests] = useState(data?.maxGuests);
+  const [NewPrice, setNewPrice] = useState(data?.price);
   const updatedHouse = {
     title: Newtitle,
     address: Newaddress,
@@ -32,6 +33,7 @@ const SinglePlace = () => {
     checkIn: NewcheckIn,
     checkOut: NewcheckOut,
     maxGuests: NewmaxGuests,
+    price: NewPrice,
   };
   const handelCheckBoxClick = (e) => {
     const { checked, name } = e.target;
@@ -299,7 +301,16 @@ const SinglePlace = () => {
               />
             </div>
           </div>
-
+          <div>
+            <h3 className="mt-2 -mb-1">Price Per Night</h3>
+            <input
+              value={NewPrice}
+              onChange={(e) => setNewPrice(e.target.value)}
+              type="text"
+              className="w-full border my-1 py-2 px-3 rounded-2xl"
+              placeholder="8"
+            />
+          </div>
           <button
             className="my-4 bg-primary p-2 w-full text-white rounded-2xl"
             type="submit"

@@ -34,6 +34,7 @@ const PlacesSection = () => {
     checkIn: checkIn,
     checkOut: checkOut,
     maxGuests: maxGuests,
+    price: price,
   };
 
   const addNewPlace = async (e) => {
@@ -322,7 +323,16 @@ const PlacesSection = () => {
                 />
               </div>
             </div>
-
+            <div>
+              <h3 className="mt-2 -mb-1">Price Per Night</h3>
+              <input
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                type="text"
+                className="w-full border my-1 py-2 px-3 rounded-2xl"
+                placeholder="8"
+              />
+            </div>
             <button
               className="my-4 bg-primary p-2 w-full text-white rounded-2xl"
               type="submit"
