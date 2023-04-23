@@ -4,6 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import userRouter from "./routes/user.js";
 import placeRouter from "./routes/place.js";
+import bookingRouter from "./routes/booking.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import imageDownloader from "image-downloader";
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/auth", userRouter);
 app.use("/place", placeRouter);
+app.use("/booking", bookingRouter);
 app.post("/uploadByLink", async (req, res) => {
   const { link } = req.body;
   try {

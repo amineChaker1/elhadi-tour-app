@@ -50,6 +50,13 @@ export const apiSlice = createApi({
         body: data,
       }),
     }),
+    addNewBooking: builder.mutation({
+      query: (data) => ({
+        url: "booking",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -62,4 +69,5 @@ export const {
   useGetPlacesQuery,
   useGetSinglePlaceQuery,
   useUpdateSinglePlaceMutation,
+  useAddNewBookingMutation,
 } = apiSlice;
