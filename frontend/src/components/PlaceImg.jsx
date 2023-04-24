@@ -8,6 +8,7 @@ const PlaceImg = ({ place, index = 0, className = null }) => {
   }
   return (
     <img
+      style={{ height: "100%" }}
       className={className}
       src={`http://localhost:4321/uploads/${place.photos[index]}`}
       alt=""

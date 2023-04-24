@@ -36,13 +36,13 @@ const BookingWidget = ({ place }) => {
     navigate("/account/bookings");
   };
   return (
-    <div>
+    <div id="book">
       <div className="bg-white shadow p-4 rounded-2xl">
         <div className="text-2xl text-center">
-          Price: {place?.price} DA / per night
+          {place?.price} DA / per night
         </div>
         <div className="border rounded-2xl mt-4">
-          <div className="flex">
+          <div className="flex flex-col md:flex-row">
             <div className="py-3 px-4">
               <label>Check in:</label>
               <input
@@ -64,30 +64,29 @@ const BookingWidget = ({ place }) => {
             <label>Number of guests:</label>
             <input
               type="number"
-              className="border border-myGold rounded-2xl m-2 p-1  "
+              className="border-2 border-myGold rounded-2xl m-2 p-1"
               value={numberOfGuests}
               onChange={(ev) => setNumberOfGuests(ev.target.value)}
             />
           </div>
-          {numberOfNights > 0 && (
-            <div className="py-3 px-4 border-t">
-              <label>Your full name:</label>
-              <input
-                type="text"
-                className="border border-myGold rounded-2xl m-2 p-1  px-3"
-                value={name}
-                onChange={(ev) => setName(ev.target.value)}
-              />{" "}
-              <br />
-              <label>Phone number:</label>
-              <input
-                type="tel"
-                className="border border-myGold rounded-2xl m-2 p-1 px-3"
-                value={phone}
-                onChange={(ev) => setPhone(ev.target.value)}
-              />
-            </div>
-          )}
+
+          <div className="py-3 px-4 border-t">
+            <label>Your full name:</label>
+            <input
+              type="text"
+              className="border-2 border-myGold rounded-2xl m-2 p-1  px-3"
+              value={name}
+              onChange={(ev) => setName(ev.target.value)}
+            />{" "}
+            <br />
+            <label>Phone number:</label>
+            <input
+              type="tel"
+              className="border-2 border-myGold rounded-2xl m-2 p-1 px-3"
+              value={phone}
+              onChange={(ev) => setPhone(ev.target.value)}
+            />
+          </div>
         </div>
         <button
           onClick={bookThisPlace}
