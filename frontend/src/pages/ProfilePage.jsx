@@ -20,7 +20,7 @@ const ProfilePage = () => {
   const insertClass = (type = null) => {
     let classes = "py-2 px-6";
     if (type === subpage) {
-      classes += " bg-primary rounded-full text-white";
+      classes += " bg-myGold rounded-full text-white";
     }
     return classes;
   };
@@ -35,11 +35,14 @@ const ProfilePage = () => {
           {" "}
           My Bookings{" "}
         </Link>
-        <Link className={insertClass("places")} to={"/account/places"}>
-          {" "}
-          My Accomendations{" "}
-        </Link>
+        {import.meta.env.VITE_ADMIN_EMAIL === user.email && (
+          <Link className={insertClass("places")} to={"/account/places"}>
+            {" "}
+            My Accomendations{" "}
+          </Link>
+        )}
       </nav>
+
       {subpage === "places" && <PlacesSection />}
       {subpage === "profile" && (
         <div className="text-center mt-16 max-w-lg mx-auto">
@@ -49,7 +52,7 @@ const ProfilePage = () => {
           <br />
           <button
             onClick={handleClick}
-            className="bg-primary p-2 w-full text-white rounded-2xl bg-primary text-white p-2 rounded-xl max-w-sm mt-5"
+            className="bg-myGold p-2 w-full text-white rounded-2xl bg-myGold text-white p-2 rounded-xl max-w-sm mt-5"
           >
             {user?.name ? "Logout" : "Login"}
           </button>

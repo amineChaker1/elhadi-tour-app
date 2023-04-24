@@ -46,6 +46,12 @@ const OnePlace = () => {
           </div>
         </div>
       </div>
+      <div className="sticky">
+        <div className="flex justify-evenly">
+          <h1>Appeler</h1>
+          <h1>Message</h1>
+        </div>
+      </div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Header = () => {
   const user = useSelector((state) => state.user);
   console.log(user);
   return (
-    <header className="flex justify-between p-4 border-b border-primary">
+    <header className="flex justify-between p-4 border-b border-myGold">
       <Link to={"/"} className="flex items-center gap-1">
         <img src={hadiLogo} alt="" className="w-12 h-12" />
         <img src={hadiSecondLogo} alt="" className="hidden sm:block h-10" />
@@ -17,7 +17,7 @@ const Header = () => {
         <div className="border-l border-gray-300"></div>
         <div>Any week</div>
 
-        <button className="bg-primary text-white p-1 rounded-full">
+        <button className="bg-myGold text-white p-1 rounded-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -34,9 +34,10 @@ const Header = () => {
           </svg>
         </button>
       </div>
+
       <Link
         to={user ? "/account" : "login"}
-        className="flex items-center gap-2 border border-gray-300 rounded-full py-2 px-4 "
+        className="flex hover:text-myGold items-center gap-2 border border-gray-300 rounded-full py-2 px-4 "
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +45,7 @@ const Header = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-6 h-6 "
         >
           <path
             strokeLinecap="round"
@@ -53,20 +54,22 @@ const Header = () => {
           />
         </svg>
         {user && <span> {user.name} </span>}
-        <div className="bg-gray-500 text-white rounded-full border border-gray-500 overflow-hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-6 h-6 relative top-1"
-          >
-            <path
-              fillRule="evenodd"
-              d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </div>
+        {!user && (
+          <div className="bg-gray-500 text-white rounded-full border border-gray-500 overflow-hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-6 h-6 relative top-1"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+        )}
       </Link>
     </header>
   );

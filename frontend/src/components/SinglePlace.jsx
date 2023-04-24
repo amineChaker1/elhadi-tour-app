@@ -118,7 +118,7 @@ const SinglePlace = () => {
             />
             <button
               onClick={addPhotoByLink}
-              className="bg-primary p-2 text-white"
+              className="bg-myGold p-2 text-white"
             >
               {" "}
               Add Photo{" "}
@@ -317,7 +317,7 @@ const SinglePlace = () => {
             />
           </div>
           <button
-            className="my-4 bg-primary p-2 w-full text-white rounded-2xl"
+            className="my-4 bg-myGold p-2 w-full text-white rounded-2xl"
             type="submit"
           >
             Save

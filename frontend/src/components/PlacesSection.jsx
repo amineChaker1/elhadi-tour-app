@@ -90,7 +90,7 @@ const PlacesSection = () => {
     <div>
       <div className="text-center">
         <Link
-          className="inline-flex gap-1 mt-5 bg-primary text-white py-2 px-6 rounded-full"
+          className="inline-flex gap-1 mt-5 bg-myGold text-white py-2 px-6 rounded-full"
           to={"/account/places/new"}
         >
           <svg
@@ -139,7 +139,7 @@ const PlacesSection = () => {
               />
               <button
                 onClick={addPhotoByLink}
-                className="bg-primary p-2 text-white"
+                className="bg-myGold p-2 text-white"
               >
                 {" "}
                 Add Photo{" "}
@@ -334,7 +334,7 @@ const PlacesSection = () => {
               />
             </div>
             <button
-              className="my-4 bg-primary p-2 w-full text-white rounded-2xl"
+              className="my-4 bg-myGold p-2 w-full text-white rounded-2xl"
               type="submit"
             >
               Save

@@ -64,7 +64,7 @@ const BookingWidget = ({ place }) => {
             <label>Number of guests:</label>
             <input
               type="number"
-              className="border border-primary rounded-2xl m-2 p-1  "
+              className="border border-myGold rounded-2xl m-2 p-1  "
               value={numberOfGuests}
               onChange={(ev) => setNumberOfGuests(ev.target.value)}
             />
@@ -74,7 +74,7 @@ const BookingWidget = ({ place }) => {
               <label>Your full name:</label>
               <input
                 type="text"
-                className="border border-primary rounded-2xl m-2 p-1  px-3"
+                className="border border-myGold rounded-2xl m-2 p-1  px-3"
                 value={name}
                 onChange={(ev) => setName(ev.target.value)}
               />{" "}
@@ -82,7 +82,7 @@ const BookingWidget = ({ place }) => {
               <label>Phone number:</label>
               <input
                 type="tel"
-                className="border border-primary rounded-2xl m-2 p-1 px-3"
+                className="border border-myGold rounded-2xl m-2 p-1 px-3"
                 value={phone}
                 onChange={(ev) => setPhone(ev.target.value)}
               />
@@ -91,7 +91,7 @@ const BookingWidget = ({ place }) => {
         </div>
         <button
           onClick={bookThisPlace}
-          className="bg-primary p-2 w-full text-white rounded-2xl mt-4"
+          className="bg-myGold p-2 w-full text-white rounded-2xl mt-4"
         >
           Book this place
           {numberOfNights > 0 && (
