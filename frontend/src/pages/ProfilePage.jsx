@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { logout } from "../../app/userSlice";
 import PlacesSection from "../components/PlacesSection";
+import BookingSection from "../components/BookingSection";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -41,19 +42,20 @@ const ProfilePage = () => {
       </nav>
       {subpage === "places" && <PlacesSection />}
       {subpage === "profile" && (
-        <div className="text-center max-w-lg mx-auto">
+        <div className="text-center mt-16 max-w-lg mx-auto">
           {user?.name
             ? `Logged in as ${user?.name} (${user?.email})`
             : "You Are Not Logged In"}{" "}
           <br />
           <button
             onClick={handleClick}
-            className=" bg-primary text-white p-2 rounded-xl max-w-sm mt-2"
+            className="bg-primary p-2 w-full text-white rounded-2xl bg-primary text-white p-2 rounded-xl max-w-sm mt-5"
           >
             {user?.name ? "Logout" : "Login"}
           </button>
         </div>
       )}
+      {subpage === "bookings" && <BookingSection />}
     </div>
   );
 };

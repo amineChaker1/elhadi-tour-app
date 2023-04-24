@@ -8,6 +8,7 @@ import ProfilePage from "./pages/ProfilePage";
 
 import SinglePlace from "./components/SinglePlace";
 import OnePlace from "./pages/OnePlace";
+import SingleBooking from "./components/SingleBooking";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/account/:subpage/:action" element={<ProfilePage />} />
         <Route path="/account/place/edit/:id" element={<SinglePlace />} />
         <Route path="place/:id" element={<OnePlace />} />
+        <Route path="/account/bookings/:id" element={<SingleBooking />} />
       </Route>
     </Routes>
   );

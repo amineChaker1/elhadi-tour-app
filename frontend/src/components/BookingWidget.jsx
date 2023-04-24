@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { differenceInCalendarDays } from "date-fns";
 import { useAddNewBookingMutation } from "../../app/apiSlice";
+import { useSelector } from "react-redux";
 const BookingWidget = ({ place }) => {
+  const navigate = useNavigate();
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const user = useSelector((state) => state.user);
+
   let numberOfNights = 0;
   if (checkIn && checkOut) {
     numberOfNights = differenceInCalendarDays(
@@ -16,7 +21,8 @@ const BookingWidget = ({ place }) => {
   }
   const [addbooking] = useAddNewBookingMutation();
   const newBooking = {
-    place: place?.id,
+    place: place?._id,
+    user: user,
     checkIn: checkIn,
     checkOut: checkOut,
     name: name,
@@ -27,7 +33,7 @@ const BookingWidget = ({ place }) => {
   const bookThisPlace = async (e) => {
     e.preventDefault();
     const res = await addbooking(newBooking);
-    console.log(res);
+    navigate("/account/bookings");
   };
   return (
     <div>
