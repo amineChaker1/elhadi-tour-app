@@ -19,21 +19,21 @@ const Home = () => {
                 <Carousel.Item>
                   <img
                     className="rounded-2xl object-cover aspect-square"
-                    src={`http://localhost:4321/uploads/${cerPlacce.photos?.[0]}`}
+                    src={`https://elhadi.onrender.com/uploads/${cerPlacce.photos?.[0]}`}
                     alt=""
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
                     className="rounded-2xl object-cover aspect-square"
-                    src={`http://localhost:4321/uploads/${cerPlacce.photos?.[1]}`}
+                    src={`https://elhadi.onrender.com/uploads/${cerPlacce.photos?.[1]}`}
                     alt=""
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
                     className="rounded-2xl object-cover aspect-square"
-                    src={`http://localhost:4321/uploads/${cerPlacce.photos?.[2]}`}
+                    src={`https://elhadi.onrender.com/uploads/${cerPlacce.photos?.[2]}`}
                     alt=""
                   />
                 </Carousel.Item>

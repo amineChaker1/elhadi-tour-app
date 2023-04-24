@@ -60,7 +60,7 @@ const PlacesSection = () => {
       data.append("photos", files[i]);
     }
     axios
-      .post("http://localhost:4321/upload", data, {
+      .post("https://elhadi.onrender.com/upload", data, {
         headers: { "Content-type": "multipart/form-data" },
       })
       .then((response) => {
@@ -151,7 +151,7 @@ const PlacesSection = () => {
                   <div>
                     <img
                       className=""
-                      src={`http://localhost:4321/uploads/${link}`}
+                      src={`https://elhadi.onrender.com/uploads/${link}`}
                       alt=""
                     />
                   </div>

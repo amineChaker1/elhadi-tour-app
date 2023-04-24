@@ -15,7 +15,7 @@ const ListingSection = () => {
           <div className="flex w-32 h-32 bg-gray-300 ">
             <img
               className="h-full w-full"
-              src={`http://localhost:4321/uploads/${place.photos[0]}`}
+              src={`https://elhadi.onrender.com/uploads/${place.photos[0]}`}
               alt=""
             />
           </div>

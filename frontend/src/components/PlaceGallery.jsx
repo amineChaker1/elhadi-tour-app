@@ -32,7 +32,7 @@ const PlaceGallery = ({ place }) => {
               <div>
                 <img
                   className=" w-52 md:w-96 "
-                  src={`http://localhost:4321/uploads/${photo}`}
+                  src={`https://elhadi.onrender.com/uploads/${photo}`}
                   alt=""
                 />
               </div>
@@ -51,7 +51,7 @@ const PlaceGallery = ({ place }) => {
               <img
                 onClick={() => setShowAllPhotos(true)}
                 className="aspect-square cursor-pointer object-cover"
-                src={`http://localhost:4321/uploads/${place?.photos[0]}`}
+                src={`https://elhadi.onrender.com/uploads/${place?.photos[0]}`}
                 alt=""
               />
             </div>
@@ -62,7 +62,7 @@ const PlaceGallery = ({ place }) => {
             <img
               onClick={() => setShowAllPhotos(true)}
               className="aspect-square cursor-pointer object-cover"
-              src={`http://localhost:4321/uploads/${place?.photos[1]}`}
+              src={`https://elhadi.onrender.com/uploads/${place?.photos[1]}`}
               alt=""
             />
           )}
@@ -71,7 +71,7 @@ const PlaceGallery = ({ place }) => {
               <img
                 onClick={() => setShowAllPhotos(true)}
                 className="aspect-square cursor-pointer object-cover relative top-2"
-                src={`http://localhost:4321/uploads/${place?.photos[2]}`}
+                src={`https://elhadi.onrender.com/uploads/${place?.photos[2]}`}
                 alt=""
               />
             )}
