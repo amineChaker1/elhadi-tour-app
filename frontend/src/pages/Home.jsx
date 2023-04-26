@@ -1,5 +1,5 @@
 import React from "react";
-
+import loading from "../assets/oh_loader.gif";
 import { useGetPlacesQuery } from "../../app/apiSlice";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
@@ -7,7 +7,12 @@ import "bootstrap/dist/css/bootstrap.css";
 const Home = () => {
   const { data, isLoading } = useGetPlacesQuery();
   if (isLoading) {
-    return <div>is Loading</div>;
+    return (
+      <div className="h-screen flex justify-center items-center flex-col">
+        <img src={loading} className="" alt="" />
+        <p>Loading Houses Please Wait....</p>
+      </div>
+    );
   }
   return (
     <div>
