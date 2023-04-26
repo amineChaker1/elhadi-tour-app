@@ -1,5 +1,5 @@
 import React from "react";
-import loading from "../assets/oh_loader.gif";
+import loading from "../assets/loading.gif";
 import { useGetPlacesQuery } from "../../app/apiSlice";
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
@@ -9,8 +9,8 @@ const Home = () => {
   if (isLoading) {
     return (
       <div className="h-screen flex justify-center items-center flex-col">
-        <img src={loading} className="" alt="" />
-        <p>Loading Houses Please Wait....</p>
+        <img src={loading} className="w-28 h-28 md:w-36 md:h-36 " alt="" />
+        <p className="mb-36 mt-2">Loading Houses Please Wait....</p>
       </div>
     );
   }
