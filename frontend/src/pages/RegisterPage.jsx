@@ -25,14 +25,14 @@ const RegisterPage = () => {
     <section class="bg-white ">
       <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-myGold">
-          Bienvenue !
+          ! مرحبا بك
         </h2>
-        <p class="mb-6 lg:mb-8  text-center  sm:text-xl">
-          Heureux de vous voir ici, créez un compte si vous êtes nouveau ici, et
-          si vous êtes un utilisateur existant,{" "}
-          <Link to="/login" className=" underline font-semibold">
+        <p class="mb-6 lg:mb-8   text-center  sm:text-xl">
+          سعيد برؤيتك هنا ، قم بإنشاء حساب إذا كنت جديدًا هنا ، و إذا استخدمت
+          منصتنا من قبل،{" "}
+          <Link to="/login" className="font-bold underline ">
             {" "}
-            Connectez-Vous.
+            قم بتسجيل الدخول
           </Link>
         </p>
         <form onSubmit={registerUser} class="space-y-6">

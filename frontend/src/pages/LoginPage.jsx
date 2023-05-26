@@ -24,14 +24,13 @@ const LoginPage = () => {
     <section class="bg-white ">
       <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-myGold">
-          Bienvenue de retour !
+          ! مرحبا بعودتك
         </h2>
         <p class="mb-8 lg:mb-16  text-center  sm:text-xl">
-          Ravi de vous revoir, connectez-vous à votre compte et si vous êtes
-          nouveau ici,{" "}
-          <Link to="/register" className=" underline font-semibold">
+          اذا كان عندك حساب قديم قم بتسجيل الدخول في الأسفل , واذا كنت جديدا
+          <Link to="/register" className=" underline font-bold">
             {" "}
-            Inscrivez-Vous.
+            قم بالتسجيل
           </Link>
         </p>
         <form action="#" onSubmit={loginUser} class="space-y-8">
@@ -40,7 +39,7 @@ const LoginPage = () => {
               for="email"
               class="block mb-2 text-sm font-medium text-gray-900"
             >
-              Votre email
+              بريدك الالكتروني
             </label>
             <input
               value={email}
@@ -58,7 +57,7 @@ const LoginPage = () => {
               for="password"
               class="block mb-2 text-sm font-medium text-gray-900 "
             >
-              Votre Mot De Pass
+              كلمة السر
             </label>
             <input
               value={password}
@@ -75,7 +74,7 @@ const LoginPage = () => {
             type="submit"
             class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg bg-myGold  hover:bg-myGold focus:ring-4 focus:outline-none focus:ring-myGold dark:bg-myGold dark:hover:bg-myGold dark:focus:ring-myGold"
           >
-            Se Connecter
+            تسجيل الدخول
           </button>
         </form>
       </div>
