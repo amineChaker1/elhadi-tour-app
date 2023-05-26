@@ -38,13 +38,11 @@ const BookingWidget = ({ place }) => {
   return (
     <div id="book">
       <div className="bg-white shadow p-4 rounded-2xl">
-        <div className="text-2xl text-center">
-          {place?.price} DA / per night
-        </div>
+        <div className="text-2xl text-center">{place?.price} Da لليلة</div>
         <div className="border rounded-2xl mt-4">
           <div className="flex flex-col md:flex-row">
             <div className="py-3 px-4">
-              <label>Check in:</label>
+              <label>اختر يوم مجيئك</label>
               <input
                 type="date"
                 value={checkIn}
@@ -52,7 +50,7 @@ const BookingWidget = ({ place }) => {
               />
             </div>
             <div className="py-3 px-4 border-l">
-              <label>Check out:</label>
+              <label>اختر يوم رحيلك</label>
               <input
                 type="date"
                 value={checkOut}
@@ -61,7 +59,7 @@ const BookingWidget = ({ place }) => {
             </div>
           </div>
           <div className="py-3 px-4 border-t">
-            <label>Number of guests:</label>
+            <label>عدد الأفراد القادمين</label>
             <input
               type="number"
               className="border-2 w-36 sm:w-56 md:w-full border-myGold rounded-2xl m-2 p-1"
@@ -71,7 +69,7 @@ const BookingWidget = ({ place }) => {
           </div>
 
           <div className="py-3 px-4 border-t">
-            <label>Your full name:</label>
+            <label>اسمك الكامل</label>
             <input
               type="text"
               className="border-2 w-36 sm:w-56 md:w-full border-myGold rounded-2xl m-2 p-1  px-3"
@@ -79,7 +77,7 @@ const BookingWidget = ({ place }) => {
               onChange={(ev) => setName(ev.target.value)}
             />{" "}
             <br />
-            <label>Phone number:</label>
+            <label>رقم هاتفك</label>
             <input
               type="tel"
               className="border-2 w-36 sm:w-56 md:w-full border-myGold rounded-2xl m-2 p-1 px-3"
@@ -92,7 +90,7 @@ const BookingWidget = ({ place }) => {
           onClick={bookThisPlace}
           className="bg-myGold p-2 w-full text-white rounded-2xl mt-4"
         >
-          Book this place
+          احجز هذا المنزل
           {numberOfNights > 0 && (
             <span> {numberOfNights * place.price} DA </span>
           )}

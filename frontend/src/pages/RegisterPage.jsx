@@ -41,7 +41,7 @@ const RegisterPage = () => {
               for="name"
               class="block mb-2 text-sm font-medium text-gray-900"
             >
-              Votre Nom
+              اسمك
             </label>
             <input
               value={name}
@@ -50,7 +50,7 @@ const RegisterPage = () => {
               name="name"
               id="name"
               class="shadow-sm outline-secondary  text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-2 border-myGold focus:ring-myGold focus:border-myGold  placeholder-myGold dark:shadow-sm-light"
-              placeholder="Mo7 Sis"
+              placeholder="utilisateur"
               required
             />
           </div>
@@ -59,7 +59,7 @@ const RegisterPage = () => {
               for="email"
               class="block mb-2 text-sm font-medium text-gray-900"
             >
-              Votre email
+              بريدك الالكتروني
             </label>
             <input
               value={email}
@@ -77,7 +77,7 @@ const RegisterPage = () => {
               for="password"
               class="block mb-2 text-sm font-medium text-gray-900 "
             >
-              Votre Mot De Pass
+              كلمة السر
             </label>
             <input
               value={password}
@@ -94,7 +94,7 @@ const RegisterPage = () => {
             type="submit"
             class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg bg-myGold  hover:bg-myGold focus:ring-4 focus:outline-none focus:ring-myGold dark:bg-myGold dark:hover:bg-myGold dark:focus:ring-myGold"
           >
-            Inscrivez-Vous
+            انشاء حساب
           </button>
         </form>
       </div>
