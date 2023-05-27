@@ -15,7 +15,7 @@ const Header = () => {
       <div className="hidden  sm:flex items-center gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300">
         {/* <div>أفضل الأسعار</div>*/}
         <div className="border-l border-gray-300"></div>
-        <div>أسعار الأشهر القادمة</div>
+        <div>أسعار الأشهر القادمةdont deploy</div>
 
         <button className="bg-myGold text-white p-1 rounded-full">
           <svg
