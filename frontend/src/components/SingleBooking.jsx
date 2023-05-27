@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import AddressLink from "./AddressLink";
 import BookingDates from "./BookingDates";
 import PlaceGallery from "./PlaceGallery";
-
+import loading from "../assets/loading.gif";
 const SingleBooking = () => {
   const { id } = useParams();
   const [booking, setBooking] = useState(null);
@@ -25,7 +25,14 @@ const SingleBooking = () => {
     });
   }, [booking]);
   if (!booking) {
-    return <div>is loading</div>;
+    return (
+      <div className="h-screen flex justify-center items-center flex-col">
+        <img src={loading} className="w-28 h-28 md:w-36 md:h-36 " alt="" />
+        <p className="mb-36 mt-2 font-bold">
+          يتم تجهيز منزلكم يرجى الانتظار....
+        </p>
+      </div>
+    );
   }
   return (
     <div>
@@ -35,13 +42,13 @@ const SingleBooking = () => {
           {booking?.place?.address}
         </AddressLink>
         <div className="bg-gray-200 p-6 my-6 rounded-2xl flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl mb-4">Your booking information:</h2>
-            <BookingDates booking={booking} />
-          </div>
           <div className="bg-myGold p-6 text-white rounded-2xl">
-            <div>Total price</div>
+            <div>الثمن الكلي</div>
             <div className="text-3xl">{booking?.price}DA</div>
+          </div>
+          <div>
+            <h2 className="text-base md:text-2xl mb-4">معلومات عن الحجز</h2>
+            <BookingDates booking={booking} />
           </div>
         </div>
         <PlaceGallery place={booking?.place} />
@@ -68,7 +75,7 @@ const SingleBooking = () => {
                 />
               </svg>
             </div>
-            <div>Appeler</div>
+            <div>اتصل بنا</div>
           </a>
           <a
             href="tel:+213775258404"
@@ -90,7 +97,7 @@ const SingleBooking = () => {
                 />
               </svg>
             </div>
-            <div>Confirm</div>
+            <div>تأكيد الحجز</div>
           </a>
         </div>
       </div>
