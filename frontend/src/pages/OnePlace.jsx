@@ -18,7 +18,7 @@ const OnePlace = () => {
   return (
     <div>
       <div className="mt-4  -mx-8  md:px-36 px-8 pt-8">
-        <h1 className="text-3xl">{data?.title} </h1>
+        <h1 className="text-3xl text-right">{data?.title} </h1>
         <AddressLink>{data?.address}</AddressLink>
         <PlaceGallery place={data} />
         <div className="mt-8 mb-8 text-right grid gap-8 grid-cols-1 md:grid-cols-[2fr_1fr]">

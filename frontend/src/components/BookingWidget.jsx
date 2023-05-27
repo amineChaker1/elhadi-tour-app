@@ -42,7 +42,7 @@ const BookingWidget = ({ place }) => {
         <div className="border rounded-2xl mt-4">
           <div className="flex flex-col md:flex-row">
             <div className="py-3 px-4">
-              <label>اختر يوم مجيئك</label>
+              <label>اختر يوم مجيئك</label> <br />
               <input
                 type="date"
                 value={checkIn}
@@ -50,7 +50,7 @@ const BookingWidget = ({ place }) => {
               />
             </div>
             <div className="py-3 px-4 border-l">
-              <label>اختر يوم رحيلك</label>
+              <label>اختر يوم رحيلك</label> <br />
               <input
                 type="date"
                 value={checkOut}
@@ -62,7 +62,7 @@ const BookingWidget = ({ place }) => {
             <label>عدد الأفراد القادمين</label>
             <input
               type="number"
-              className="border-2 w-36 sm:w-56 md:w-full border-myGold rounded-2xl m-2 p-1"
+              className="border-2 text-center w-36 sm:w-56 md:w-full border-myGold rounded-2xl m-2 p-1"
               value={numberOfGuests}
               onChange={(ev) => setNumberOfGuests(ev.target.value)}
             />
@@ -72,7 +72,7 @@ const BookingWidget = ({ place }) => {
             <label>اسمك الكامل</label>
             <input
               type="text"
-              className="border-2 w-36 sm:w-56 md:w-full border-myGold rounded-2xl m-2 p-1  px-3"
+              className="border-2 text-center w-36 sm:w-56 md:w-full border-myGold rounded-2xl m-2 p-1  px-3"
               value={name}
               onChange={(ev) => setName(ev.target.value)}
             />{" "}
@@ -80,7 +80,7 @@ const BookingWidget = ({ place }) => {
             <label>رقم هاتفك</label>
             <input
               type="tel"
-              className="border-2 w-36 sm:w-56 md:w-full border-myGold rounded-2xl m-2 p-1 px-3"
+              className="border-2 text-center w-36 sm:w-56 md:w-full border-myGold rounded-2xl m-2 p-1 px-3"
               value={phone}
               onChange={(ev) => setPhone(ev.target.value)}
             />
@@ -90,9 +90,9 @@ const BookingWidget = ({ place }) => {
           onClick={bookThisPlace}
           className="bg-myGold p-2 w-full text-white rounded-2xl mt-4"
         >
-          احجز هذا المنزل
+          احجز هذا المنزل ب
           {numberOfNights > 0 && (
-            <span> {numberOfNights * place.price} DA </span>
+            <span> {numberOfNights * place.price} دينار</span>
           )}
         </button>
       </div>
