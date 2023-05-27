@@ -10,9 +10,7 @@ const Home = () => {
     return (
       <div className="h-screen flex justify-center items-center flex-col">
         <img src={loading} className="w-28 h-28 md:w-36 md:h-36 " alt="" />
-        <p className="mb-36 mt-2 font-bold">
-          يتم تجهيز منزلكم يرجى الانتظار....
-        </p>
+        <p className="mb-36 mt-2 font-bold">This is the dev branch</p>
       </div>
     );
   }
